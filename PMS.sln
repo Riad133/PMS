@@ -5,6 +5,28 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.WebApi", "PMS.WebApi\PMS.WebApi.csproj", "{6D31E2B8-C370-4F85-8129-D9852790A866}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PMS.Client", "http://localhost:5456", "{7ECE1988-1961-4DAC-B0EF-51738CE5A024}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_5456"
+		Debug.AspNetCompiler.PhysicalPath = "PMS.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5456\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_5456"
+		Release.AspNetCompiler.PhysicalPath = "PMS.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5456\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "PMS.Client\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +37,10 @@ Global
 		{6D31E2B8-C370-4F85-8129-D9852790A866}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D31E2B8-C370-4F85-8129-D9852790A866}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D31E2B8-C370-4F85-8129-D9852790A866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ECE1988-1961-4DAC-B0EF-51738CE5A024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECE1988-1961-4DAC-B0EF-51738CE5A024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECE1988-1961-4DAC-B0EF-51738CE5A024}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECE1988-1961-4DAC-B0EF-51738CE5A024}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
