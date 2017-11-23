@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace PMS.WebApi
 {
@@ -12,6 +13,7 @@ namespace PMS.WebApi
             // Web API configuration and services
 
             // Web API routes
+           config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
