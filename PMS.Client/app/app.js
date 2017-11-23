@@ -1,4 +1,4 @@
 ﻿(function() {
     "use strict";
-    const app = angular.module("productManagement", [])
-});
+     var app =angular.module("productManagement", []);
+}());
