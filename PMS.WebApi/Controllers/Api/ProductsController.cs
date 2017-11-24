@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using PMS.WebApi.Dtos;
 using PMS.WebApi.Infrastructure;
 using PMS.WebApi.Models;
 
@@ -18,12 +20,13 @@ namespace PMS.WebApi.Controllers.Api
             _context = new ApplicationDbContext();
         }
           //get/api/products/
-        public IEnumerable<Product> GetCustomers()
+        public IEnumerable<ProductDto> GetCustomers()
         {
-            IEnumerable<Product> products = new List<Product>();
+            IEnumerable<ProductDto> productDtos = new List<ProductDto>();
             try
             {
-                products =_context.Products.ToList();
+                productDtos =_context.Products.ToList().Select(Mapper.Map<Product,ProductDto>);
+                return productDtos;
             }
             catch (Exception exception)
             {
@@ -32,15 +35,17 @@ namespace PMS.WebApi.Controllers.Api
                 throw  new HttpResponseException(Response);
              
             }
-            return products;
+            
         }
         //get/api/products/1
-        public Product GetProduct(int id)
+        public ProductDto GetProduct(int id)
         {
             Product product = new Product();
             try
             {
                 product = _context.Products.SingleOrDefault(p => p.ProductId == id);
+                
+                
             }
             catch (Exception exception)
             {
@@ -52,26 +57,29 @@ namespace PMS.WebApi.Controllers.Api
             {
                 throw  new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return product;
+            return Mapper.Map<Product,ProductDto>(product);
+           
 
         }
 
         //Post  /api/products
         [HttpPost]
-        public Product CreateProduct(Product product)
+        public ProductDto CreateProduct(ProductDto productDto)
         {
             if (!ModelState.IsValid)
             {
                 throw  new HttpResponseException(HttpStatusCode.BadRequest);
             }
+            var product = Mapper.Map<ProductDto, Product>(productDto);
+
             _context.Products.Add(product);
             _context.SaveChanges();
-            return product;
+            return productDto;
 
         }
         //PUT /api/products/1
         [HttpPut]
-        public void UpdateProduct(int id, Product product)
+        public void UpdateProduct(int id, ProductDto productDto)
         {
             if (!ModelState.IsValid)
             {
@@ -89,7 +97,7 @@ namespace PMS.WebApi.Controllers.Api
                     
                 }
 
-                ProductInDB.ProductName = product.ProductName;
+                Mapper.Map<ProductDto, Product>(productDto, ProductInDB);
                 _context.SaveChanges();
             }
             catch (Exception exception)
