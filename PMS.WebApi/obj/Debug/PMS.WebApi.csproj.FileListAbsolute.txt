@@ -37,3 +37,5 @@ E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.p
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.Migrations.init.resources
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.csproj.GenerateResource.Cache
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.Migrations.add_ImageURL_Product.resources
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\AutoMapper.dll
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\AutoMapper.xml
