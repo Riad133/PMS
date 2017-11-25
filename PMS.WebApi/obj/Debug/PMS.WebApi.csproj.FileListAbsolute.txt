@@ -39,3 +39,6 @@ E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.c
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.Migrations.add_ImageURL_Product.resources
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\AutoMapper.dll
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\AutoMapper.xml
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Cors.dll
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Http.Cors.dll
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Http.Cors.xml
