@@ -1,61 +1,37 @@
-﻿<html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿
+<html >
 <head>
     <title>Product Management System</title>
-    <!-- Style sheets -->
-    <link href="Content/bootstrap.css" rel="stylesheet" />   
-    <link href="css/app.css" rel="stylesheet" />
-
+   
    
 </head>
 <body ng-app="productManagement">
-    <div class="panel panel-primary">
-        <div class="panel-heading" style="font-size: large">Product List</div>
-        <table class="table" ng-controller='ProductListViewCtrl as vm'>
-            <thead>
-                <tr>
-                    <td>
-                        <button class="btn btn-primary" type="button" ng-click="vm.toggleImage()">
-                            {{ vm.showImage ? "Hide" : "Show"}} Image
-                        </button>
-                    </td>
-                    <td>Product</td>
-                    <td>Code</td>
-                    <td>Available</td>
-                    <td>Price</td>
-                </tr>
-            </thead>
-            <tbody>
+<div class="container">
+    <div ui-view></div>
+</div>
+    
 
-                <tr ng-repeat="product in vm.products">
-                    <td>
-                        <img ng-src="{{product.imageUrl}}"
-                             style="width: 50px; margin: 2px"
-                             title="{{product.productName}}" ng-if="vm.showImage" />
-                    </td>
-                    <td>{{product.productName}}</td>
-                    <td>{{product.productCode}}</td>
-                    <td>{{product.releaseDate}}</td>
-                    <td>{{product.price | currency}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- Librarry scripts -->
+<!-- Style sheets -->
+<link href="Content/bootstrap.css" rel="stylesheet" />   
+<link href="css/app.css" rel="stylesheet" />
 
-    <script src="Scripts/jquery-1.9.1.js"></script>
-    <script src="Scripts/angular.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/angular-resource.js"></script>
+<!-- Librarry scripts -->
+
+<script src="Scripts/jquery-1.9.1.js"></script>
+<script src="Scripts/angular.js"></script>
+<script src="Scripts/bootstrap.js"></script>
+
+<script src="Scripts/angular-resource.js"></script>
+
+<script src="Scripts/angular-ui-router.js"></script>
+ 
+<!-- Application Script -->
 
 
-    <!-- Application Script -->
-
-    <script src="app/app.js"></script>
-    <script src="common/common.services.js"></script>
-    <script src="common/productResourse.js"></script>
-
-    <script src="app/products/productListCtrl.js"></script>
-
+<script src="app/app.js"></script>
+<script src="common/common.services.js"></script>
+<script src="common/productResourse.js"></script>
+  
+<script src="app/products/productListCtrl.js"></script>
 </body>
 </html>
