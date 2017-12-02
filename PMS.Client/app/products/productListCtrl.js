@@ -12,10 +12,10 @@
         productResource.query(function (data) {
             vm.products = data;
         });
-        
+
         vm.toggleImage = function() {
             vm.showImage = ! vm.showImage;
-        }
+        };
     }
 
 }());

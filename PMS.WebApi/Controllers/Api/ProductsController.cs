@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 using AutoMapper;
 using PMS.WebApi.Dtos;
 using PMS.WebApi.Infrastructure;
@@ -19,6 +20,7 @@ namespace PMS.WebApi.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
+        [ResponseType(typeof(ProductDto))]
           //get/api/products/
         public IEnumerable<ProductDto> GetCustomers()
         {
@@ -37,10 +39,18 @@ namespace PMS.WebApi.Controllers.Api
             }
             
         }
+        [ResponseType(typeof(ProductDto))]
         //get/api/products/1
         public ProductDto GetProduct(int id)
         {
+
             Product product = new Product();
+            if (id ==0)
+            {
+                product.ProductId = 0;
+                product.ReleaseDate= DateTime.Today.Date;
+                return Mapper.Map<Product, ProductDto>(product);
+            }
             try
             {
                 product = _context.Products.SingleOrDefault(p => p.ProductId == id);
@@ -61,7 +71,7 @@ namespace PMS.WebApi.Controllers.Api
            
 
         }
-
+        [ResponseType(typeof(ProductDto))]
         //Post  /api/products
         [HttpPost]
         public ProductDto CreateProduct(ProductDto productDto)
@@ -77,6 +87,7 @@ namespace PMS.WebApi.Controllers.Api
             return productDto;
 
         }
+        [ResponseType(typeof(ProductDto))]
         //PUT /api/products/1
         [HttpPut]
         public void UpdateProduct(int id, ProductDto productDto)

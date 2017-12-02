@@ -4,7 +4,8 @@
     "use strict";
     var app = angular.module("productManagement",
                              ["common.services",
-                                 "ui.router"
+                                 "ui.router",
+                                 "ngResource"
                               
                             ]);
 
@@ -24,8 +25,60 @@
                 {
                     url: "/",
                     templateUrl: "app/welcomeView.html"
-                });
+                })
+           
+            .state("productDetail",
+                {
+                    url: "/products/detail/:productId",
+                    templateUrl: "app/products/productDetailView.html",
+                    controller: "ProductDetailCtrl as vm",
+                    resolve :
+                    {
+                        productResource: "productResource",
+                        product : function(productResource, $stateParams) {
+                            var productId = $stateParams.productId;
+                            console.log(productResource.get({ id: productId }));
+                           return  productResource.get({ id: productId }).$promise;
+                        }
 
+                    }
+                   
+                })
+
+            .state("productEdit",
+                {
+                    abstract:true,
+                    url: "/products/edit/:productId",
+                    templateUrl: "app/products/productEditView/productEditView.html",
+                    controller: "ProductEditCtrl as vm",
+                    resolve:
+                    {
+                        productResource: "productResource",
+                        product: function (productResource, $stateParams) {
+                            var productId = $stateParams.productId;
+                            console.log(productResource.get({ id: productId }));
+                            return productResource.get({ id: productId }).$promise;
+                        }
+
+                    }
+                })
+
+            .state("productEdit.info",
+                {
+                    url:"/info",
+                    templateUrl: "app/products/productEditView/productEditInfoView.html"
+                })
+
+            .state("productEdit.price",
+                {
+                    url: "/price",
+                    templateUrl: "app/products/productEditView/productEditPriceView.html"
+                })
+            .state("productEdit.tags",
+                {
+                    url:"/tags",
+                    templateUrl: "app/products/productEditView/productEditTagsView.html"
+                });
 
     }]);
 

@@ -42,3 +42,5 @@ E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\AutoMapper.xml
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Cors.dll
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Http.Cors.dll
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Http.Cors.xml
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\Oracle.ManagedDataAccess.dll
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\Oracle.ManagedDataAccess.EntityFramework.dll

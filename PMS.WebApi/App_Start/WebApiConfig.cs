@@ -15,6 +15,9 @@ namespace PMS.WebApi
             // Web API configuration and services
 
             // Web API routes
+
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+           
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
