@@ -1,10 +1,34 @@
 ﻿<form class="form-horizontal" name="ProductPriceForm">
     <fieldset>
         <legend>Product Price</legend>
-        <div class="form-group control-label">
-            <label class="col-sm-2" for="inputProductPrice">Price</label>
-            <input class="col-sm-2" type="text" id="inputProductPrice" ng-model="vm.product.price " value="{{vm.product.price}}" />
-        </div>
+        <div class="form-group " ng-class="{'has-error':ProductPriceForm.inputProductPrice.$invalid &&
+             ProductPriceForm.inputProductPrice.$dirty}">
+            <label class="col-sm-2 control-label" for="inputProductPrice">Price</label>
+            <div class="col-sm-4">
+                <input type="number" id="inputProductPrice" ng-model="vm.product.price "
+                       name="inputProductPrice"
+                       value="{{vm.product.price}}" required
+                       min="1" />
 
+            </div>
+            <span class="help-block has-error">
+                <span ng-show="ProductPriceForm.inputProductPrice.$error.required">Price is Required</span>
+                <span ng-show="ProductPriceForm.inputProductPrice.$error.min">Price must be grater then or equel to 1.0 BDT</span>
+
+            </span>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary" style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit(ProductPriceForm.$valid)"
+                            ng-disabled="ProductPriceForm.$invalid">
+                        Save
+                    </button>
+                </span>
+                <span class="btn btn-default" style="width: 70px"
+                      ng-click="vm.cancel()">Cancel</span>
+            </div>
+        </div>
     </fieldset>
 </form>

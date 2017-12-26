@@ -192,6 +192,14 @@
     <Compile Include="Migrations\201711221328259_add_ImageURL_Product.Designer.cs">
       <DependentUpon>201711221328259_add_ImageURL_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712131528432_add_required_in_product_model.cs" />
+    <Compile Include="Migrations\201712131528432_add_required_in_product_model.Designer.cs">
+      <DependentUpon>201712131528432_add_required_in_product_model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712251547413_add_product_Validation_property.cs" />
+    <Compile Include="Migrations\201712251547413_add_product_Validation_property.Designer.cs">
+      <DependentUpon>201712251547413_add_product_Validation_property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -253,6 +261,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711221328259_add_ImageURL_Product.resx">
       <DependentUpon>201711221328259_add_ImageURL_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712131528432_add_required_in_product_model.resx">
+      <DependentUpon>201712131528432_add_required_in_product_model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712251547413_add_product_Validation_property.resx">
+      <DependentUpon>201712251547413_add_product_Validation_property.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

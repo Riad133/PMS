@@ -44,3 +44,5 @@ E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Http.Co
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\System.Web.Http.Cors.xml
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\Oracle.ManagedDataAccess.dll
 E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.Migrations.add_required_in_product_model.resources
+E:\AngularPractice\ProductManagementSystem\PMS\PMS.WebApi\obj\Debug\PMS.WebApi.Migrations.add_product_Validation_property.resources

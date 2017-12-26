@@ -2,17 +2,14 @@
     "use strict";
     angular.module("productManagement")
         .controller("ProductListViewCtrl",
-        ["productResource",
+        ["product",
             ProductListViewCtrl]);
 
-    function ProductListViewCtrl(productResource) {
+    function ProductListViewCtrl(product) {
         var vm = this;
         vm.showImage = false;
-
-        productResource.query(function (data) {
-            vm.products = data;
-        });
-
+        vm.products = product;
+       
         vm.toggleImage = function() {
             vm.showImage = ! vm.showImage;
         };

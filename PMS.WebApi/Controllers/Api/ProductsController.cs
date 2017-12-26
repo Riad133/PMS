@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
 using AutoMapper;
 using PMS.WebApi.Dtos;
 using PMS.WebApi.Infrastructure;
@@ -22,13 +23,14 @@ namespace PMS.WebApi.Controllers.Api
         }
         [ResponseType(typeof(ProductDto))]
           //get/api/products/
-        public IEnumerable<ProductDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
+       
             IEnumerable<ProductDto> productDtos = new List<ProductDto>();
             try
             {
                 productDtos =_context.Products.ToList().Select(Mapper.Map<Product,ProductDto>);
-                return productDtos;
+                return Ok(productDtos);
             }
             catch (Exception exception)
             {
@@ -41,60 +43,63 @@ namespace PMS.WebApi.Controllers.Api
         }
         [ResponseType(typeof(ProductDto))]
         //get/api/products/1
-        public ProductDto GetProduct(int id)
+        public IHttpActionResult GetProduct(int id)
         {
-
+            
             Product product = new Product();
             if (id ==0)
             {
                 product.ProductId = 0;
                 product.ReleaseDate= DateTime.Today.Date;
-                return Mapper.Map<Product, ProductDto>(product);
+                return Ok( Mapper.Map<Product, ProductDto>(product));
             }
             try
             {
+               
                 product = _context.Products.SingleOrDefault(p => p.ProductId == id);
                 
                 
             }
             catch (Exception exception)
             {
-                HttpResponseMessage Response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
-                    exception.InnerException.Message);
-                throw new HttpResponseException(Response);
+                //HttpResponseMessage response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
+                //    exception.InnerException.Message);
+                return InternalServerError(exception);
+
             }
             if (product == null)
             {
-                throw  new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
-            return Mapper.Map<Product,ProductDto>(product);
+            return Ok( Mapper.Map<Product,ProductDto>(product));
            
 
         }
         [ResponseType(typeof(ProductDto))]
         //Post  /api/products
         [HttpPost]
-        public ProductDto CreateProduct(ProductDto productDto)
+        public IHttpActionResult CreateProduct(ProductDto productDto)
         {
             if (!ModelState.IsValid)
             {
-                throw  new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest(ModelState);
             }
             var product = Mapper.Map<ProductDto, Product>(productDto);
 
             _context.Products.Add(product);
             _context.SaveChanges();
-            return productDto;
+            productDto.ProductId = product.ProductId;
+            return Created(new Uri(Request.RequestUri +"/"+product.ProductId),productDto );
 
         }
         [ResponseType(typeof(ProductDto))]
         //PUT /api/products/1
         [HttpPut]
-        public void UpdateProduct(int id, ProductDto productDto)
+        public IHttpActionResult UpdateProduct(int id, ProductDto productDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest(ModelState);
             }
             
 
@@ -104,24 +109,28 @@ namespace PMS.WebApi.Controllers.Api
                 
                 if (ProductInDB == null)
                 {
-                    throw  new HttpResponseException(HttpStatusCode.NotFound);
-                    
+                    return NotFound();
+
                 }
 
                 Mapper.Map<ProductDto, Product>(productDto, ProductInDB);
                 _context.SaveChanges();
+                return Ok();
             }
             catch (Exception exception)
             {
-                HttpResponseMessage Response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
+                
+                HttpResponseMessage responseMessage = Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
                     exception.InnerException.Message);
-                throw new HttpResponseException(Response);
+                responseMessage.Headers.Location= new Uri(Request.RequestUri+"/"+productDto.ProductId);
+                IHttpActionResult response = ResponseMessage(responseMessage);
+                return response;
             }
         }
         //Delete /api/products/1
 
         [HttpDelete]
-        public void DeleteProduct(int id)
+        public IHttpActionResult DeleteProduct(int id)
         {
             try
             {
@@ -129,19 +138,21 @@ namespace PMS.WebApi.Controllers.Api
 
                 if (ProductInDB == null)
                 {
-                    throw new HttpResponseException(HttpStatusCode.NotFound);
+                    return NotFound(); 
 
                 }
 
 
                 _context.Products.Remove(ProductInDB);
                 _context.SaveChanges();
+                return Ok();
             }
             catch (Exception exception)
             {
-                HttpResponseMessage Response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
+                HttpResponseMessage responseMessage = Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
                     exception.InnerException.Message);
-                throw new HttpResponseException(Response);
+                IHttpActionResult resposnse = ResponseMessage(responseMessage);
+                return resposnse;
             }
         }
     }
