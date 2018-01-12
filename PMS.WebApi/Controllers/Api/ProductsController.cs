@@ -21,6 +21,7 @@ namespace PMS.WebApi.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
+   
         [ResponseType(typeof(ProductDto))]
           //get/api/products/
         public IHttpActionResult GetCustomers()
@@ -41,6 +42,7 @@ namespace PMS.WebApi.Controllers.Api
             }
             
         }
+        [Authorize(Roles = "admin")]
         [ResponseType(typeof(ProductDto))]
         //get/api/products/1
         public IHttpActionResult GetProduct(int id)
@@ -75,6 +77,7 @@ namespace PMS.WebApi.Controllers.Api
            
 
         }
+       
         [ResponseType(typeof(ProductDto))]
         //Post  /api/products
         [HttpPost]

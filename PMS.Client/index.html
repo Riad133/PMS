@@ -20,8 +20,40 @@
                     <li><a ui-sref="productList">Product List</a></li>
                     <li><a ui-sref="productEdit.info({productId:0})"><i class="glyphicon glyphicon-plus"></i>Add Product</a></li>
                 </ul>
+                <div ng-controller="MainCtrl as vm">
+                    <form ng-hide="vm.isLoggedIn()" class="navbar-form navbar-inverse navbar-right">
+                        <div class="form-group">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="username (email)"
+                                   ng-model="vm.userData.email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password"
+                                   class="form-control"
+                                   placeholder="password"
+                                   ng-model="vm.userData.password">
+                        </div>
+                        <button type="submit"
+                                class="btn btn-default"
+                                ng-click="vm.login()">
+                            Login
+                        </button>
+                        <button type="submit"
+                                class="btn btn-default"
+                                ng-click="vm.registerUser()">
+                            Register
+                        </button>
+                        <div ng-show="vm.message">{{vm.message}}</div>
+                    </form>
+
+
+
+                </div>
             </div>
+
         </div>
+
     </div>
 
 
@@ -48,7 +80,7 @@
 
     <script src="Scripts/ui-bootstrap-tpls-0.11.0.js"></script>
 
-   
+
     <!-- Application Script -->
 
 
@@ -62,7 +94,8 @@
     <script src="app/products/productEditCtrl.js"></script>
 
     <script src="app/errorCtrl.js"></script>
-
-
+    <script src="app/mainCtrl.js"></script>
+    <script src="common/userAccount.js"></script>
+    <script src="common/currentUser.js"></script>
 </body>
 </html>
