@@ -3,11 +3,11 @@
     "use strict";
     angular.module("productManagement")
         .controller("MainCtrl",
-            ["userAccount", "currentUser",
+            ["userAccount", "currentUser","$state","$window",
                
              MainCtrl]);
 
-    function MainCtrl(userAccount, currentUser) {
+    function MainCtrl(userAccount, currentUser, $state, $window) {
         var vm = this;
         vm.message = "";
         vm.userData = {
@@ -16,9 +16,25 @@
             password: '',
             confirmPassword:''
         }
+
         vm.registerUser = function() {
             
         }
+        
+        vm.logOut = function () {
+            console.log("home");
+          
+            
+            vm.userData = null;
+            $window.location.reload();
+            currentUser.removeProfile();
+            $state.go("home");
+
+    
+            
+        }
+
+
         vm.login = function() {
             vm.userData.grant_type = "password";
             vm.userData.userName = vm.userData.email;
@@ -42,6 +58,7 @@
                     }
                     }
                 });
+            $window.location.reload();
         }
 
 

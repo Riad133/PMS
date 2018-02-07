@@ -37,6 +37,7 @@
                 {
                     url: "/",
                     templateUrl: "app/welcomeView.html"
+
                 })
             .state("productDetail",
                 {

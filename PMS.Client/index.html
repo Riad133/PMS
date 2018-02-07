@@ -39,6 +39,7 @@
                                 ng-click="vm.login()">
                             Login
                         </button>
+                       
                         <button type="submit"
                                 class="btn btn-default"
                                 ng-click="vm.registerUser()">
@@ -46,6 +47,8 @@
                         </button>
                         <div ng-show="vm.message">{{vm.message}}</div>
                     </form>
+                    <button type="button" ng-hide="!vm.isLoggedIn()" ng-click="vm.logOut()" class="btn btn-default pull-right">Logout</button>
+                  
 
 
 
